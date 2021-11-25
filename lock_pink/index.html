@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="css/index.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <script>
+    var audio = new Audio('bbik.mp3');
+    audio.src = "./sound/bbik.mp3"
+    var audio_success = new Audio('success.mp3');
+    audio_success.src = "./sound/success.mp3"
+    var audio_fail = new Audio('fail.mp3');
+    audio_fail.src = "./sound/fail.mp3"
+    var audio_error = new Audio('error.mp3');
+    audio_error.src = "./sound/error.mp3"
+  </script>
+  
+  <form style="margin-left: 0%;" id="form">
+    <div class="pod" id="pod-id">
+      <div class="container">
+        <div class="row">
+          <button onclick="audio.play();" class="btn btn-secondary" id="num-1"></button>
+          <button onclick="audio.play();" class="btn btn-secondary" id="num-2"></button>
+          <button onclick="audio.play();" class="btn btn-secondary" id="num-3"></button>
+          <button onclick="audio.play();" class="btn btn-secondary" id="num-4"></button>
+          <button onclick="audio.play();" class="btn btn-secondary" id="enter"></button>
+        </div>
+      </div>
+
+      <div class="answer" id="operator"></div>
+      <div id="box">
+        <div class="textbox">
+          <h type="text" id="solution"></h>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <script src="./config/config.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
+  <script>
+    let numOne = '';
+    let operator = '';
+
+    var decrypted_answer = CryptoJS.AES.decrypt(hidden.answer, "Secret Passphrase");
+    let answer  = decrypted_answer.toString(CryptoJS.enc.Utf8);
+  
+    //up down left right => 1 2 3 4
+    var correct_arr = ['num-4','num-2','num-2','num-1','num-3']
+    var answer_arr = [];
+
+    Array.prototype.equals = function(array){
+    if (!array)
+      return false;
+    if (this.length != array.length)
+      return false;
+    if (this.length == array.length)
+      // this.sort()
+      for (var i = 0, l=this.length; i < l; i++){
+          if (this[i] instanceof Array && array[i] instanceof Array){
+            if (!this[i].equals(array[i]))
+              return false;
+          }
+          else if (this[i] != array[i]){
+            return false;
+          }  
+      }
+    return true;
+  }
+
+    // let sound = document.getElementById('beep');
+    // 초기상태를 맨 위에 해두는게 보기 좋다 . 
+    const $operator = document.querySelector('#operator');
+    const $result = document.querySelector('#result');
+    const $solution = document.querySelector('#solution');
+    const $form = document.querySelector('#form');
+    const onClickNumber = (event) => {
+    // (number) => () => {} 함수안에 함수 // 고차함수.
+      answer_arr.push(event.target.id);
+    }
+
+    const onClickEnter = (event) => {
+      if (answer_arr.length == correct_arr.length){
+        if (answer_arr.equals(correct_arr)){
+          audio_success.play();
+          $solution.textContent = answer;
+        }
+        else {
+          audio_error.play()
+          $solution.textContent = '틀렸습니다';
+        }
+      }
+      else {
+        audio_error.play()
+        // reset_variables() //초기화
+        var strText = "버튼은 "+ correct_arr.length +"가지입니다."
+        // $solution.innerHTML = strText.replace(/\n/g,'<br/>');
+        $solution.innerHTML = strText;
+      }
+
+      answer_arr = [];
+    }
+
+    document.querySelector('#num-1').addEventListener('click', onClickNumber)
+    document.querySelector('#num-2').addEventListener('click', onClickNumber)
+    document.querySelector('#num-3').addEventListener('click', onClickNumber)
+    document.querySelector('#num-4').addEventListener('click', onClickNumber)
+    document.querySelector('#enter').addEventListener('click', onClickEnter)
+
+    $form.addEventListener('submit', () => {
+      event.preventDefault(); // 기본동작 막기 (새로고침 막기) -> why? answer값 초기화 방지
+
+    })
+
+  </script>
+
+
+</body>
+
+</html>
