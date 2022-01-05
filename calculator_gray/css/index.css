@@ -1,0 +1,177 @@
+/* selector {
+    property: value;
+}*/
+*{margin:0;padding:0}
+
+* {
+box-sizing: border-box
+}
+
+* {
+font-family: 'Nanum Pen Script', cursive;
+}
+
+* {
+font-size: 30px;
+}
+
+.pod
+{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.background{
+    background-image: url(../images/gray.png);
+    width: 640px;
+    height: 480px;
+}
+
+
+.container{
+    background-image: url(../images/calculator.png);
+    width: 255px;
+    height: 353px;
+    top: 80px;
+    left: 80px;
+}
+
+
+#result {
+background-image: url(../images/result.png);
+width: 193px;
+height: 73px;
+margin: 5px;
+top: 31px;
+left: 26px;
+color : white;
+text-align: right
+}
+
+.btn {
+background-image: url(../images/button.png);
+width: 49px;
+height: 49px;
+margin: 5px;
+}
+
+#calculate{
+    background-image: url(../images/button.png);
+    width: 49px;
+    height: 49px;
+    top: 271px;
+    left: 168px;
+}
+
+#box {
+    background-image: url(../images/answer.png);
+    transform: translate(380px, 22px);
+    width: 222px;
+    height: 185px;
+    /* width: 295px;
+    height: 250px; */
+    }
+
+.textbox{
+    transform: translate(20px, 0px);
+    /* background-image: url(../images/dark.png); */
+    width: 180px;
+    height: 200px;
+}
+
+#solution{
+    /* transform: translateY(85px); */
+    transform: translate(50px, 85px);
+    /* text-align: right; */
+    /* margin-left: 10%; */
+    font-size: 30px;
+    color: black;
+}
+
+.science{
+    background-image: url(../images/seoul_science_center.png);
+    transform: translate(480px, 335px);
+    width: 113px;
+    height: 34px;
+}
+
+#operator {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    text-align: center
+    }
+
+
+#num-1{
+    top: 110px;
+    left: 25px;
+}
+
+#num-2{
+    top: 110px;
+    left: 96px;
+}
+
+#num-3{
+    top: 110px;
+    left: 168px;
+}
+
+#num-4{
+    top: 164px;
+    left: 25px;
+}
+
+#num-5{
+    top: 164px;
+    left: 96px;
+}
+
+#num-6{
+    top: 164px;
+    left: 168px;
+}
+
+#num-7{
+    top: 218px;
+    left: 25px;
+}
+
+#num-8{
+    top: 218px;
+    left: 96px;
+}
+
+#num-9{
+    top: 218px;
+    left: 168px;
+}
+
+
+#clear{
+    top: 271px;
+    left: 25px;
+}
+
+#num-0{
+    top: 271px;
+    left: 96px;
+}
+
+/* .box:hover .calcul{transform: translateX(30px);}
+.box:hover .btn_1{transform: translateX(-30px);}
+
+.calcul{transform: translateX(0px); transition: all 0.8s ease;} 
+.btn_1{transform: translateX(0px); transition: all 0.8s ease;}  */
+
+.background {position: relative}
+
+.container,.btn,#result,#calculate,#box,#textbox,#solution,.science {position: absolute}
+#num-1,#num-2,#num-3,#num-4,#num-5,#num-6,#num-7,#num-8,#num-9,#num-0, #clear {position: absolute}
+
+/* #box {position: relative}
+#solution {position: absolute} */

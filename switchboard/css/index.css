@@ -1,0 +1,181 @@
+/* selector {
+    property: value;
+}*/
+*{margin:0;padding:0;border:0;}
+
+* {
+box-sizing: border-box
+}
+
+* {
+font-family: 'Nanum Pen Script', cursive;
+}
+
+* {
+font-size: 30px;
+}
+
+.pod
+{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container{
+    background-image: url(../images/background.png);
+    width: 640px;
+    height: 480px;
+}
+
+/* .switchboard{
+    background-image: url(../images/waiting.png);
+    width: 927px;
+    height: 446px;   
+    top: 250px;
+    left: 300px;
+} */
+
+/* #result {
+background-image: url(../images/result.png);
+width: 173px;
+height: 65px;
+margin: 5px;
+top: 35px;
+left: 35px;
+color : white;
+text-align: right
+}
+
+.btn {
+background-image: url(../images/button.png);
+width: 43px;
+height: 43px;
+margin: 5px;
+}
+
+#calculate{
+    background-image: url(../images/button.png);
+    width: 43px;
+    height: 43px;
+    top: 251px;
+    left: 165px;
+} */
+
+/*정답박스*/
+#box {
+    background-image: url(../images/answer.png);
+    transform: translate(200px, -75px);
+    width: 114px;
+    height: 95px;
+    /* width: 295px;
+    height: 250px; */
+    }
+
+.textbox{
+    transform: translate(-15px, -45px);
+    width: 114px;
+    height: 95px;
+}
+
+#solution{
+    transform: translate(30px, 85px);
+    font-size: 30px;
+    color: blue;
+}
+
+#operator {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    text-align: center
+    }
+
+
+#num-1{
+    background-image: url(../images/off.png);
+    width: 75px;
+    height: 95px;
+    top: 80px;
+    left: 100px;
+    background-color : transparent;
+}
+
+#num-2{
+    background-image: url(../images/on.png);
+    width: 75px;
+    height: 95px;
+    top: 80px;
+    left: 180px;
+    background-color : transparent;
+}
+
+#num-3{
+    background-image: url(../images/off.png);
+    width: 75px;
+    height: 95px;
+    top: 80px;
+    left: 260px;
+    background-color : transparent;
+}
+
+#num-4{
+    background-image: url(../images/on.png);
+    width: 75px;
+    height: 95px;
+    top: 80px;
+    left: 340px;
+    background-color : transparent;
+}
+
+#num-5{
+    background-image: url(../images/on.png);
+    width: 75px;
+    height: 95px;
+    top: 175px;
+    left: 100px;
+    background-color : transparent;
+}
+
+#num-6{
+    background-image: url(../images/off.png);
+    width: 75px;
+    height: 95px;
+    top: 175px;
+    left: 180px;
+    background-color : transparent;
+}
+
+#num-7{
+    background-image: url(../images/on.png);
+    width: 75px;
+    height: 95px;
+    top: 175px;
+    left: 260px;
+    background-color : transparent;
+}
+
+#enter{
+    background-image: url(../images/enter.png);
+    width: 75px;
+    height: 95px;
+    top: 175px;
+    left: 340px;
+    background-color : transparent;
+}
+
+/* .box:hover .calcul{transform: translateX(30px);}
+.box:hover .btn_1{transform: translateX(-30px);}
+
+.calcul{transform: translateX(0px); transition: all 0.8s ease;} 
+.btn_1{transform: translateX(0px); transition: all 0.8s ease;}  */
+
+.container {position: relative}
+
+/* .btn,#result,#calculate,#box,#textbox,#solution,.science {position: absolute} */
+#box,#textbox,#solution,#num-1,#num-2,#num-3,#num-4,#num-5,#num-6,#num-7,#enter {position: absolute}
+
+/* #box {position: relative}
+#solution {position: absolute} */

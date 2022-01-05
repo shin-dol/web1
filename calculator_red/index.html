@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="css/index.css" rel="stylesheet" type="text/css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <script>
+    var audio = new Audio('bbik.mp3');
+    audio.src = "./sound/bbik.mp3"
+    var audio_success = new Audio('success.mp3');
+    audio_success.src = "./sound/success.mp3"
+    var audio_fail = new Audio('fail.mp3');
+    audio_fail.src = "./sound/fail.mp3"
+    var audio_error = new Audio('error.mp3');
+    audio_error.src = "./sound/error.mp3"
+  </script>
+  
+  <form style="margin-left: 0%;" id="form">
+    <div class="pod">
+      <div class="background">
+        <div class="container">
+          <div class="input_text"> 
+            <input type="text" id="result">
+          </div>
+      
+          <div class="row">
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-1">1</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-2">2</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-3">3</button>
+          </div>
+      
+          <div class="row">
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-4">4</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-5">5</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-6">6</button>
+          </div>
+      
+          <div class="row">
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-7">7</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-8">8</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-9">9</button>
+          </div>
+      
+          <div class="row">
+            <button onclick="audio.play();" class="btn btn-secondary" id="clear">리셋</button>
+            <button onclick="audio.play();" class="btn btn-secondary" id="num-0">0</button>
+            <button class="btn btn-secondary" id="calculate">입력</button>
+          </div>
+        </div>
+
+        <div class="answer" id="operator"></div>
+
+        <div class="science"></div>
+
+        <div id="box">
+          <div class="textbox">
+            <h type="text" id="solution"></h>
+          <!-- <h type="text" id="sol" style="color:black"></h> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+  <script src="./config/config.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
+  <script>
+    let numOne = '';
+    let operator = '';
+    let numTwo = '';
+    
+    var decrypted_value = CryptoJS.AES.decrypt(hidden.hiddenvalue, "Secret Passphrase");
+    var decrypted_answer = CryptoJS.AES.decrypt(hidden.answer, "Secret Passphrase");
+    let hiddenvalue = decrypted_value.toString(CryptoJS.enc.Utf8);
+    let answer  = decrypted_answer.toString(CryptoJS.enc.Utf8);
+
+    var answer_length = 4;
+    var str_answer_length = String(answer_length);
+    // let sound = document.getElementById('beep');
+    // 초기상태를 맨 위에 해두는게 보기 좋다 . 
+    const $operator = document.querySelector('#operator');
+    const $result = document.querySelector('#result');
+    const $solution = document.querySelector('#solution');
+    const $sol = document.querySelector('#sol');
+    const $form = document.querySelector('#form');
+    const onClickNumber = (event) => {
+
+      if ($result.value.length < answer_length) {
+        // if (operator) {
+        //   numTwo += event.target.textContent; // event.target.textContent  : 내가 클릭한 버튼의 글자를 그대로 가져온다.
+        // } else {
+        //   numOne += event.target.textContent;
+        // }
+
+        $result.value += event.target.textContent;
+        // (number) => () => {} 함수안에 함수 // 고차함수.
+      } else {
+        audio_error.play()
+        var strText = "비밀번호는\n"+ str_answer_length + "자리입니다."
+        $solution.innerHTML = strText.replace(/\n/g,'<br/>');
+      }
+
+
+    }
+
+    document.querySelector('#num-1').addEventListener('click', onClickNumber)
+    document.querySelector('#num-2').addEventListener('click', onClickNumber)
+    document.querySelector('#num-3').addEventListener('click', onClickNumber)
+    document.querySelector('#num-4').addEventListener('click', onClickNumber)
+    document.querySelector('#num-5').addEventListener('click', onClickNumber)
+    document.querySelector('#num-6').addEventListener('click', onClickNumber)
+    document.querySelector('#num-7').addEventListener('click', onClickNumber)
+    document.querySelector('#num-8').addEventListener('click', onClickNumber)
+    document.querySelector('#num-9').addEventListener('click', onClickNumber)
+    document.querySelector('#num-0').addEventListener('click', onClickNumber)
+
+    document.querySelector('#clear').addEventListener('click', () => {
+      $result = '';
+    });
+    document.querySelector('#calculate').addEventListener('click', () => {
+      if ($result.value == hiddenvalue) {
+        $solution.textContent = answer;
+
+        audio_success.play();
+        // $result.style.display = 'none';
+        $result.value = '';
+
+      } else {
+        $solution.textContent = '틀렸습니다';
+        audio_fail.play();
+        $result.value = '';
+      }
+    });
+    document.querySelector('#clear').addEventListener('click', () => {
+      numOne = '';
+      numTwo = '';
+      $result.value = '';
+      $solution.textContent = '';
+      $sol.textContent = '';
+
+    });
+    $form.addEventListener('submit', () => {
+      event.preventDefault(); // 기본동작 막기 (새로고침 막기) -> why? answer값 초기화 방지
+
+    })
+
+  </script>
+
+
+</body>
+
+</html>
