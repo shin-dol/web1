@@ -108,7 +108,7 @@
     let operator = '';
   
     //on 2 off 1
-    var correct_dict = {"num-1":"2","num-2":"2","num-3":"2","num-4":"1","num-5":"2","num-6":"1","num-7":"1"}
+    var correct_dict = {"num-1":"2","num-2":"2","num-3":"1","num-4":"1","num-5":"2","num-6":"1","num-7":"2"}
     var answer_dict = {"num-1":"1","num-2":"2","num-3":"1","num-4":"2","num-5":"2","num-6":"1","num-7":"2"}
 
     var decrypted_answer = CryptoJS.AES.decrypt(hidden.answer, "Secret Passphrase");
@@ -139,7 +139,7 @@
     const onClickEnter = (event) => {
       if (JSON.stringify(answer_dict) == JSON.stringify(correct_dict)){
         audio_success.play();
-        $solution.textContent = "A";
+        $solution.textContent = answer;
       }
       else {
         audio_error.play()

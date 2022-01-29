@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    * {
+      font-family: 'Nanum Pen Script', cursive;
+    }
+
+    * {
+      font-size: 30px;
+    }
+
+    #result {
+      width: 183px;
+      height: 50px;
+      margin: 5px;
+      text-align: right
+    }
+
+
+
+    #operator {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      text-align: center
+    }
+
+    .btn {
+      width: 70px;
+      height: 70px;
+      margin: 5px
+    }
+
+    #calculate {
+      width: 150px;
+    }
+  </style>
+
+</head>
+<script>
+  var audio = new Audio('bbik.mp3');
+  audio.src = "./sound/bbik.mp3"
+  var audio_success = new Audio('success.mp3');
+  audio_success.src = "./sound/success.mp3"
+  var audio_fail = new Audio('fail.mp3');
+  audio_fail.src = "./sound/fail.mp3"
+</script>
+
+<body>
+  <form style="margin-left: 40%;" id="form">
+    <div class="input-group flex-nowrap" style="width: 228px; ">
+      <input readonly type="text" id="result" class="form-control" aria-label="Username" style="margin-left: -12%;"
+        aria-describedby="addon-wrapping">
+    </div>
+
+    <div class="row">
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-7">7</button>
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-8">8</button>
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-9">9</button>
+    </div>
+    <div class="row">
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-4">4</button>
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-5">5</button>
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-6">6</button>
+
+    </div>
+    <div class="row">
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-1">1</button>
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-2">2</button>
+      <button onclick="audio.play();" class="btn btn-secondary" id="num-3">3</button>
+
+    </div>
+    <div class="row">
+      <button onclick="audio.play();" class="btn btn-secondary" id="clear">C</button>
+
+      <button class="btn btn-secondary" id="calculate">Enter</button>
+
+    </div>
+
+
+    <div id="box" style="width: 234px; height: 50px; margin-left: -18px; background-color: black; border-radius: 10px;">
+      <h type="text" id="solution" style="text-align: center; margin-left: 15%; color: white;">
+      </h>
+      <h type="text" id="sol" style="color:black"></h>
+    </div>
+  </form>
+
+</body>
+
+</html>
